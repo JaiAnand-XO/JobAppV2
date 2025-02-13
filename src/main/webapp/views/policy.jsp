@@ -1,124 +1,26 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>London Part-Time Working Policy</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Part-Time Working Policy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style1.css">
     <style>
-        /* Body Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #f1c40f; /* Yellow text color */
-            overflow-x: hidden;
-            background-color: #111; /* Prevents white space at the bottom */
-            height: 100%;
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        /* Full-screen video background */
-        .video-background {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            animation: zoomBackground 15s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        /* Video animation for zoom */
-        @keyframes zoomBackground {
-            0% {
-                transform: translate(-50%, -50%) scale(1.05);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.1);
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1.05);
-            }
-        }
-
-        /* Dark gradient overlay */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
-            z-index: 0;
-        }
-
-        /* Content container */
-        .container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            z-index: 1;
-            animation: fadeInContainer 2s ease-out;
-        }
-
-        /* Fade-in effect for container */
-        @keyframes fadeInContainer {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Title styling */
-        .title {
-            text-align: center;
-            font-size: 3.5em;
-            color: #f1c40f;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .scrolling-text {
+            padding: 10px;
             font-weight: bold;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
-            animation: slideInTitle 2s ease-out;
-        }
-
-        /* Slide-in animation for title */
-        @keyframes slideInTitle {
-            0% {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Section Styling */
-        h2 {
-            color: #f1c40f;
-            font-size: 2.5em;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-        }
-
-        p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #f1c40f;
-            line-height: 1.8;
-            text-align: justify;
-            font-weight: 300;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
         }
 
         .section {
@@ -127,175 +29,105 @@
             margin-bottom: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            color: #f1c40f;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInSection 1.5s forwards;
         }
 
-        /* Fade-in animation for sections */
-        @keyframes fadeInSection {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .section h2 {
+            font-size: 2em;
+            color: #3498db;
         }
 
-        .section:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .section h3 {
-            font-size: 1.6em;
-            font-weight: bold;
-            color: #f1c40f;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        ul li {
-            font-size: 1.1em;
-            color: #f1c40f;
-            list-style-type: square;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        .key-points {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .key-point {
-            padding: 20px;
-            background-color: #2c3e50;
-            border: 2px solid #f1c40f;
-            border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            text-align: center;
-            opacity: 0;
-            animation: fadeInKeyPoint 1.5s forwards;
-        }
-
-        /* Fade-in animation for key points */
-        @keyframes fadeInKeyPoint {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .key-point:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .key-point h3 {
-            color: #f1c40f;
-            font-size: 1.3em;
-            font-weight: 600;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
+        p {
+            color: #ecf0f1;
             font-size: 1.2em;
-            color: #f1c40f;
-            background-color: #2c3e50;
-            padding: 15px;
-            border-radius: 8px;
-            letter-spacing: 1px;
+            line-height: 1.8;
         }
 
-        footer a {
-            color: #f1c40f;
-            text-decoration: none;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        /* Floating Action Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        footer a:hover {
+        .floating-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Breadcrumbs Styling */
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .breadcrumb-item a {
+            color: #3498db;
+        }
+
+        .breadcrumb-item a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <!-- Video background -->
-    <video class="video-background" autoplay muted loop>
-        <source src="${pageContext.request.contextPath}/static/londonvid.mp4" type="video/mp4">
-        <!-- Fallback message -->
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- Dark gradient overlay -->
-    <div class="overlay"></div>
-
-    <div class="container">
-        <h1 class="title">Part-Time Working Policy</h1>
-
-        <!-- Section 1: What is Part-Time Work? -->
-        <div class="section">
-            <h2>What is Part-Time Work?</h2>
-            <p>Part-time work refers to working fewer hours than a full-time job, often 20 hours per week. It is a flexible option ideal for students and individuals who have other commitments.</p>
-        </div>
-
-        <!-- Section 2: Why is Part-Time Work Popular for Students? -->
-        <div class="section">
-            <h2>Why is it Popular for Students?</h2>
-            <p>Part-time jobs are great for students looking to earn extra income without compromising their studies. These jobs offer flexibility and valuable work experience while maintaining academic balance.</p>
-        </div>
-
-        <!-- Section 3: Key Points About Part-Time Jobs -->
-        <div class="section">
-            <h2>Key Points to Know:</h2>
-            <div class="key-points">
-                <div class="key-point">
-                    <h3>Working Hours</h3>
-                    <p>Part-time jobs typically involve working for 20 hours a week, which can vary from evenings, weekends, or even shifts depending on the employer.</p>
-                </div>
-
-                <div class="key-point">
-                    <h3>Types of Part-Time Jobs</h3>
-                    <p>Common part-time jobs include:</p>
-                    <ul>
-                        <li>Retail Jobs</li>
-                        <li>Hospitality</li>
-                        <li>Tutoring</li>
-                        <li>Delivery Jobs</li>
-                    </ul>
-                </div>
-
-                <div class="key-point">
-                    <h3>Things to Keep in Mind</h3>
-                    <p>Make sure to balance work with study, and remember that living in London can be expensive. Proper budgeting will help ensure financial stability during part-time work.</p>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand fs-1 fw-medium" href="#">Job Application</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewalljobs">All Jobs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="viewpolicy">View Policy</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                        href="https://www.linkedin.com/in/jai-anand-51047b243/">Contact</a></li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <!-- Footer Section -->
-        <footer>
-            <p>&copy; 2025 Part-Time Job Guide | All Rights Reserved</p>
-            <p>For more info, visit <a href="https://www.gov.uk/part-time-worker-rights" target="_blank">UK Government</a></p>
-        </footer>
+    <div class="container mt-5">
+        <!-- Policy Section -->
+        <div class="section">
+            <h2>Part-Time Working Policy</h2>
+            <p>The part-time working policy allows employees to work a flexible number of hours per week. The key factors to consider include:</p>
+            <ul>
+                <li>Working hours typically up to 20 hours per week.</li>
+                <li>Part-time work is available in various industries including retail, hospitality, and customer service.</li>
+                <li>Employees are entitled to the same benefits as full-time workers, proportionate to the hours worked.</li>
+            </ul>
+
+            <h2>Eligibility</h2>
+            <p>Eligibility for part-time work may vary based on the nature of the role. Employees should check with their respective employers or HR departments for specific eligibility criteria.</p>
+
+            <h2>Rights and Responsibilities</h2>
+            <p>Part-time workers are entitled to rights such as sick leave, holiday pay, and protection against unfair dismissal. Employers must ensure part-time workers have access to the same opportunities as full-time workers, where applicable.</p>
+        </div>
+
+        <!-- Section for Additional Information -->
+        <div class="section">
+            <h2>Additional Information</h2>
+            <p>For more information, you can refer to government guidelines and regulations regarding part-time employment. Always ensure to check the latest regulations and updates regarding employment rights.</p>
+        </div>
     </div>
+
+    <!-- Floating Back Button -->
+    <a href="home" class="floating-btn">Go Back</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
 </html>

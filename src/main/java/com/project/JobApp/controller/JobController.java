@@ -6,12 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.JobApp.model.JobPost;
 import com.project.JobApp.service.JobService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import jakarta.validation.Valid;
+
 
 @Controller
 public class JobController {
@@ -50,14 +56,32 @@ public class JobController {
 	
 	// ************************************************************************
 
-	@PostMapping("/handleForm")
-	public String handleAddJobForm(JobPost jobPost,Model model) {
-		model.addAttribute("jobPost", jobPost);
-		service.addJobPost(jobPost);
-		//System.out.println(jobPost);
-		  return "success";
-		
+//	@PostMapping("/handleForm")
+//	public String handleAddJobForm(JobPost jobPost,Model model) {
+//		model.addAttribute("jobPost", jobPost);
+//		service.addJobPost(jobPost);
+//		//System.out.println(jobPost);
+//		  return "success";
+//
+//	}
+@PostMapping("/handleForm")
+public String handleAddJobForm(
+	@Valid	@ModelAttribute("jobPost") JobPost jobPost,
+							   BindingResult result,
+							   Model model,
+							   RedirectAttributes redirectAttributes) {
+	// Check for validation errors
+	if (result.hasErrors()) {
+		for (FieldError error : result.getFieldErrors()) {
+			redirectAttributes.addFlashAttribute("errorMessage", error.getDefaultMessage());
+		}
+		return "redirect:/addjob"; // Redirect back to the form
 	}
+
+	// Save job post if no errors
+	service.addJobPost(jobPost);
+	return "success"; // Redirect to success page
+}
 	
 
 
