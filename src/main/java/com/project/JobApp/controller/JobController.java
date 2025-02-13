@@ -39,6 +39,12 @@ public class JobController {
 		return "addjob";
 	}
 
+	@GetMapping("/addjob")
+	public String showAddJobForm(Model model) {
+		model.addAttribute("jobPost", new JobPost()); // Key "jobPost" must match form's modelAttribute
+		return "addjob"; // Name of your JSP view
+	}
+
 	// ************************************************************************
 	@GetMapping("/viewpolicy")
 	public String viewPolicy(){return "policy";}
