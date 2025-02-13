@@ -29,6 +29,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="viewalljobs">All Jobs</a></li>
+                <li class="nav-item"><a class="nav-link" href="viewpolicy">View Policy</a></li>
                 <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/jai-anand-51047b243/">Contact</a></li>
             </ul>
         </div>
