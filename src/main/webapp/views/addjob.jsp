@@ -99,32 +99,31 @@
                         </div>
 
                         <!-- Tech Stack -->
-                        <div class="mb-2">
-                            <label for="postTechStack" class="form-label">Tech Stack</label>
-                            <form:select path="postTechStack" cssClass="form-select" multiple="true" id="postTechStack" required="true">
-                                <form:option value="Java">Java</form:option>
-                                <form:option value="JavaScript">JavaScript</form:option>
-                                <form:option value="Swift">Swift</form:option>
-                                <form:option value="TypeScript">TypeScript</form:option>
-                                <form:option value="Go">Go</form:option>
-                                <form:option value="Kotlin">Kotlin</form:option>
-                                <form:option value="Rust">Rust</form:option>
-                                <form:option value="PHP">PHP</form:option>
-                                <form:option value="HTML5">HTML5</form:option>
-                                <form:option value="CSS3">CSS3</form:option>
-                                <form:option value="React">React</form:option>
-                                <form:option value="Angular">Angular</form:option>
-                                <form:option value="Django">Django</form:option>
-                                <form:option value="Flask">Flask</form:option>
-                                <form:option value="Node.js">Node.js</form:option>
-                                <form:option value="Docker">Docker</form:option>
-                                <form:option value="Kubernetes">Kubernetes</form:option>
-                                <form:option value="AWS">AWS</form:option>
-                                <form:option value="Machine Learning">Machine Learning</form:option>
-                                <form:option value="Cybersecurity">Cybersecurity</form:option>
-                            </form:select>
-                            <form:errors path="postTechStack" cssClass="text-danger"/>
-                        </div>
+                                               <div class="mb-2">
+                           <label class="form-label">Tech Stack</label>
+                           <div>
+                               <input type="checkbox" name="postTechStack" value="Java" id="java" /> Java<br />
+                               <input type="checkbox" name="postTechStack" value="JavaScript" id="javascript" /> JavaScript<br />
+                               <input type="checkbox" name="postTechStack" value="Swift" id="swift" /> Swift<br />
+                               <input type="checkbox" name="postTechStack" value="TypeScript" id="typescript" /> TypeScript<br />
+                               <input type="checkbox" name="postTechStack" value="Go" id="go" /> Go<br />
+                               <input type="checkbox" name="postTechStack" value="Kotlin" id="kotlin" /> Kotlin<br />
+                               <input type="checkbox" name="postTechStack" value="Rust" id="rust" /> Rust<br />
+                               <input type="checkbox" name="postTechStack" value="PHP" id="php" /> PHP<br />
+                               <input type="checkbox" name="postTechStack" value="HTML5" id="html5" /> HTML5<br />
+                               <input type="checkbox" name="postTechStack" value="CSS3" id="css3" /> CSS3<br />
+                               <input type="checkbox" name="postTechStack" value="React" id="react" /> React<br />
+                               <input type="checkbox" name="postTechStack" value="Angular" id="angular" /> Angular<br />
+                               <input type="checkbox" name="postTechStack" value="Django" id="django" /> Django<br />
+                               <input type="checkbox" name="postTechStack" value="Flask" id="flask" /> Flask<br />
+                               <input type="checkbox" name="postTechStack" value="Node.js" id="nodejs" /> Node.js<br />
+                               <input type="checkbox" name="postTechStack" value="Docker" id="docker" /> Docker<br />
+                               <input type="checkbox" name="postTechStack" value="Kubernetes" id="kubernetes" /> Kubernetes<br />
+                               <input type="checkbox" name="postTechStack" value="AWS" id="aws" /> AWS<br />
+                               <input type="checkbox" name="postTechStack" value="Machine Learning" id="ml" /> Machine Learning<br />
+                               <input type="checkbox" name="postTechStack" value="Cybersecurity" id="cybersecurity" /> Cybersecurity<br />
+                           </div>
+                       </div>
 
                         <!-- Submit Button -->
                         <div class="text-center">
